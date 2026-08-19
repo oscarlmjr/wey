@@ -1,0 +1,53 @@
+{
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "OM Theme (No Italic)",
+    "editor.renderWhitespace": "all",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "[html]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.suggest.insertMode": "replace"
+    },
+    "[django-html]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.suggest.insertMode": "replace"
+    },
+    "[vue]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.suggest.insertMode": "replace"
+    },
+    "hediet.vscode-drawio.resizeImages": null,
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.iconTheme": "vs-seti",
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.showExpandedAbbreviation": "always",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "html": "html",
+    },
+    "diffEditor.renderSideBySide": false,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "workbench.browser.openLocalhostLinks": false,
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editor.enablePreview": true,
+    "editor.rulers": [
+        79,
+    ],
+    "workbench.editor.labelFormat": "short",
+    "workbench.settings.applyToAllProfiles": [
+        
+    ],
+	"python.linting.flake8Enabled": true,
+	"python.testing.unittestEnabled": false,
+	"python.linting.mypyEnabled": true,
+    "python.terminal.useEnvFile": true,
+    "python.envFile": "${workspaceFolder}/.env"
+
+}
