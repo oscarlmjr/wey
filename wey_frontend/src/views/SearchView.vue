@@ -20,6 +20,7 @@
                         <p class="text-xs text-gray-500">120 posts</p>
                     </div>
                 </div>
+
                 <div class="p-4 text-center bg-gray-100 rounded-lg">
                     <img src="https://i.pravatar.cc/300?img=10" class="mb-6 rounded-full">
                 
@@ -30,6 +31,7 @@
                         <p class="text-xs text-gray-500">120 posts</p>
                     </div>
                 </div>
+
                 <div class="p-4 text-center bg-gray-100 rounded-lg">
                     <img src="https://i.pravatar.cc/300?img=10" class="mb-6 rounded-full">
                 
@@ -40,6 +42,7 @@
                         <p class="text-xs text-gray-500">120 posts</p>
                     </div>
                 </div>
+
                 <div class="p-4 text-center bg-gray-100 rounded-lg">
                     <img src="https://i.pravatar.cc/300?img=10" class="mb-6 rounded-full">
                 
@@ -50,16 +53,7 @@
                         <p class="text-xs text-gray-500">120 posts</p>
                     </div>
                 </div>
-                <div class="p-4 text-center bg-gray-100 rounded-lg">
-                    <img src="https://i.pravatar.cc/300?img=10" class="mb-6 rounded-full">
                 
-                    <p><strong>Code With Stein</strong></p>
-
-                    <div class="mt-6 flex space-x-8 justify-around">
-                        <p class="text-xs text-gray-500">182 friends</p>
-                        <p class="text-xs text-gray-500">120 posts</p>
-                    </div>
-                </div>
                 <div class="p-4 text-center bg-gray-100 rounded-lg">
                     <img src="https://i.pravatar.cc/300?img=10" class="mb-6 rounded-full">
                 
@@ -112,5 +106,24 @@
                 </div>  
             </div>
         </div>
+
+        <div class="main-right col-span-1 space-y-4">
+            <PeopleYouMayKnow />
+
+            <Trends />
+        </div>
     </div>
 </template>
+
+<script>
+import PeopleYouMayKnow from '../components/PeopleYouMayKnow.vue'
+import Trends from '../components/Trends.vue'
+
+export default {
+    name: 'SearchView',
+    components: {
+        PeopleYouMayKnow,
+        Trends,
+    }
+}
+</script>
