@@ -103,6 +103,7 @@ export default {
                 axios
                     .post('/api/signup/', this.form)
                     .then(response => {
+                        console.log('response.data.message => ', response.data.message);
                         if (response.data.message === 'success') {
                             this.toastStore.showToast(5000, 'The user is registered. Please log in', 'bg-emerald-500')
 

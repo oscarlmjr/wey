@@ -12,6 +12,7 @@
 
                         <span class="text-xs text-gray-500">18 minutes ago</span>
                     </div>
+
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img src="https://i.pravatar.cc/300?img=10" class="w-[40px] rounded-full">
@@ -21,6 +22,7 @@
 
                         <span class="text-xs text-gray-500">18 minutes ago</span>
                     </div>
+
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img src="https://i.pravatar.cc/300?img=10" class="w-[40px] rounded-full">
@@ -72,6 +74,16 @@
                             <span class="text-xs text-gray-500 leading-none">2 min ago</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg">
+                <div class="p-4">  
+                    <textarea class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What do you want to say?"></textarea>
+                </div>
+
+                <div class="p-4 border-t border-gray-100 flex justify-between">
+                    <a href="#" class="inline-block py-4 px-6 bg-purple-600 text-white rounded-lg">Post</a>
                 </div>
             </div>
         </div>
