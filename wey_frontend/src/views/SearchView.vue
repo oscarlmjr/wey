@@ -17,7 +17,7 @@
                 class="p-4 bg-white border border-gray-200 rounded-lg grid grid-cols-4 gap-4"
                 v-if="users.length"
             >
-                <div
+                <div 
                     class="p-4 text-center bg-gray-100 rounded-lg"
                     v-for="user in users"
                     v-bind:key="user.id"
@@ -31,7 +31,7 @@
                     </p>
 
                     <div class="mt-6 flex space-x-8 justify-around">
-                        <p class="text-xs text-gray-500">182 friends</p>
+                        <p class="text-xs text-gray-500">{{ user.friends_count }} friends</p>
                         <p class="text-xs text-gray-500">120 posts</p>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
                 <p><strong>{{ user.name }}</strong></p>
 
                 <div class="mt-6 flex space-x-8 justify-around">
-                    <p class="text-xs text-gray-500">182 friends</p>
+                    <RouterLink :to="{name: 'friends', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} friends</RouterLink>
                     <p class="text-xs text-gray-500">120 posts</p>
                 </div>
 
@@ -27,16 +27,15 @@
                     >
                         Log out
                     </button>
-                    
                 </div>
             </div>
         </div>
 
         <div class="main-center col-span-2 space-y-4">
             <div 
-            class="bg-white border border-gray-200 rounded-lg"
-            v-if="userStore.user.id === user.id"
-        >
+                class="bg-white border border-gray-200 rounded-lg"
+                v-if="userStore.user.id === user.id"
+            >
                 <form v-on:submit.prevent="submitForm" method="post">
                     <div class="p-4">  
                         <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
@@ -73,15 +72,18 @@ import PeopleYouMayKnow from '../components/PeopleYouMayKnow.vue'
 import Trends from '../components/Trends.vue'
 import FeedItem from '../components/FeedItem.vue'
 import { useUserStore } from '@/stores/user'
+import { useToastStore } from '@/stores/toast'
 
 export default {
     name: 'FeedView',
 
     setup() {
         const userStore = useUserStore()
+        const toastStore = useToastStore()
 
         return {
-            userStore
+            userStore,
+            toastStore
         }
     },
 
@@ -94,7 +96,9 @@ export default {
     data() {
         return {
             posts: [],
-            user: {},
+            user: {
+                id: null
+            },
             body: '',
         }
     },
@@ -112,7 +116,7 @@ export default {
             immediate: true
         }
     },
-    
+
     methods: {
         sendFriendshipRequest() {
             axios
@@ -120,16 +124,17 @@ export default {
                 .then(response => {
                     console.log('data', response.data)
 
-                    // if (response.data.message == 'request already sent') {
-                    //     this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
-                    // } else {
-                    //     this.toastStore.showToast(5000, 'The request was sent!', 'bg-emerald-300')
-                    // }
+                    if (response.data.message == 'request already sent') {
+                        this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
+                    } else {
+                        this.toastStore.showToast(5000, 'The request was sent!', 'bg-emerald-300')
+                    }
                 })
                 .catch(error => {
                     console.log('error', error)
                 })
         },
+
         getFeed() {
             axios
                 .get(`/api/posts/profile/${this.$route.params.id}/`)
@@ -160,6 +165,14 @@ export default {
                 .catch(error => {
                     console.log('error', error)
                 })
+        },
+
+        logout() {
+            console.log('Log out')
+
+            this.userStore.removeToken()
+
+            this.$router.push('/login')
         }
     }
 }
