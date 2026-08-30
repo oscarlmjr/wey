@@ -10,6 +10,25 @@
                     <p class="text-xs text-gray-500">182 friends</p>
                     <p class="text-xs text-gray-500">120 posts</p>
                 </div>
+
+                <div class="mt-6">
+                    <button 
+                        class="inline-block py-4 px-3 bg-purple-600 text-xs text-white rounded-lg" 
+                        @click="sendFriendshipRequest"
+                        v-if="userStore.user.id !== user.id"
+                    >
+                        Send friendship request
+                    </button>
+
+                    <button 
+                        class="inline-block py-4 px-3 bg-red-600 text-xs text-white rounded-lg" 
+                        @click="logout"
+                        v-if="userStore.user.id === user.id"
+                    >
+                        Log out
+                    </button>
+                    
+                </div>
             </div>
         </div>
 
@@ -95,6 +114,22 @@ export default {
     },
     
     methods: {
+        sendFriendshipRequest() {
+            axios
+                .post(`/api/friends/${this.$route.params.id}/request/`)
+                .then(response => {
+                    console.log('data', response.data)
+
+                    // if (response.data.message == 'request already sent') {
+                    //     this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
+                    // } else {
+                    //     this.toastStore.showToast(5000, 'The request was sent!', 'bg-emerald-300')
+                    // }
+                })
+                .catch(error => {
+                    console.log('error', error)
+                })
+        },
         getFeed() {
             axios
                 .get(`/api/posts/profile/${this.$route.params.id}/`)
