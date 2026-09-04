@@ -12,7 +12,6 @@ from .serializers import ConversationSerializer, ConversationDetailSerializer, C
 def conversation_list(request):
     conversations = Conversation.objects.filter(users__in=list([request.user]))
     serializer = ConversationSerializer(conversations, many=True)
-    print(conversations)
 
     return JsonResponse(serializer.data, safe=False)
 
