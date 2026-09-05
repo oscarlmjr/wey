@@ -44,7 +44,6 @@
     </div>
 </template>
 
-
 <script>
 import axios from 'axios'
 
@@ -67,7 +66,7 @@ export default (await import('vue')).defineComponent({
             form: {
                 email: this.userStore.user.email,
                 name: this.userStore.user.name,
-                avatar: null,
+                // avatar: null,
             },
             errors: [],
         }
@@ -88,13 +87,10 @@ export default (await import('vue')).defineComponent({
             if (this.errors.length === 0) {
                 let formData = new FormData()
                 formData.append('avatar', this.$refs.file.files[0])
-                // formData.append('avatar', file)
                 formData.append('name', this.form.name)
                 formData.append('email', this.form.email)
 
                 axios
-                    // .post('/api/editprofile/', formData, {
-                    // .post('/api/editprofile/', this.form)
                     .post('/api/editprofile/', formData, {
                         headers: {
                             "Content-Type": "multipart/form-data",
@@ -107,7 +103,8 @@ export default (await import('vue')).defineComponent({
                             this.userStore.setUserInfo({
                                 id: this.userStore.user.id,
                                 name: this.form.name,
-                                email: this.form.email
+                                email: this.form.email,
+                                avatar: response.data.user.get_avatar
                             })
 
                             this.$router.back()
@@ -121,6 +118,5 @@ export default (await import('vue')).defineComponent({
             }
         }
     }
-
   })
 </script>

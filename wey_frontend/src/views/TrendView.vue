@@ -72,7 +72,6 @@ export default (await import('vue')).defineComponent ({
                     console.log('error', error)
                 })
         },
-
     }
 })
 </script>

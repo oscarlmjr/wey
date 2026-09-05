@@ -33,12 +33,25 @@ def signup(request):
 
     if form.is_valid():
         form.save()
+        # user = form.save()
+        # user.is_active = False
+        # user.save()
 
-        # Send verification email later!
+        # url = f'http://127.0.0.1:8000/activateemail/?email={user.email}&id={user.id}'
+
+        # send_mail(
+        #     "Please verify your email",
+        #     f"The url for activating your account is: {url}",
+        #     "noreply@wey.com",
+        #     [user.email],
+        #     fail_silently=False,
+        # )
     else:
-        message = 'error'
+        message = form.errors.as_json()
 
-    return JsonResponse({'message': message})
+    print(message)
+
+    return JsonResponse({'message': message}, safe=False)
 
 
 @api_view(['GET'])
@@ -68,15 +81,14 @@ def editprofile(request):
     if User.objects.exclude(id=user.id).filter(email=email).exists():
         return JsonResponse({'message': 'email already exists'})
     else:
-        print(request.FILES)
-        print(request.POST)
-
         form = ProfileForm(request.POST, request.FILES, instance=user)
 
         if form.is_valid():
             form.save()
+        
+        serializer = UserSerializer(user)
 
-        return JsonResponse({'message': 'information updated'})
+        return JsonResponse({'message': 'information updated', 'user': serializer.data})
 
 
 @api_view(['POST'])

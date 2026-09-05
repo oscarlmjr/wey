@@ -56,10 +56,22 @@ def post_list_profile(request, id):
 def post_create(request):
     form = PostForm(request.data)
 
+    # if attachment_form.is_valid():
+    #     attachment = attachment_form.save(commit=False)
+    #     attachment.created_by = request.user
+    #     attachment.save()
+
     if form.is_valid():
         post = form.save(commit=False)
         post.created_by = request.user
         post.save()
+
+        # if attachment:
+        #     post.attachments.add(attachment)
+
+        user = request.user
+        user.posts_count = user.posts_count + 1
+        user.save()
 
         serializer = PostSerializer(post)
 
