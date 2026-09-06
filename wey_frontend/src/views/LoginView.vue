@@ -91,8 +91,7 @@ export default {
                     })
                     .catch(error => {
                         console.log('error', error)
-                        // this.errors.push('The email or password is incorrect! Or the user is not activated!')
-                        this.errors.push('The email or password is incorrect!')
+                        this.errors.push('The email or password is incorrect! Or the user is not activated!')
                     })
             }
             
