@@ -25,7 +25,7 @@
 
                     <div>
                         <label>E-mail</label><br>
-                        <input type="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        <input type="email" name="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
@@ -58,7 +58,7 @@ import axios from 'axios'
 
 import { useToastStore } from '@/stores/toast'
 
-export default {
+export default (await import('vue')).defineComponent({
     setup() {
         const toastStore = useToastStore()
 
@@ -125,5 +125,5 @@ export default {
             }
         }
     }
-}
+})
 </script>

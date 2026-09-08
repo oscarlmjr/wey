@@ -8,7 +8,6 @@ from .forms import SignupForm, ProfileForm
 from .models import User, FriendshipRequest
 from .serializers import UserSerializer, FriendshipRequestSerializer
 
-
 @api_view(['GET'])
 def me(request):
     return JsonResponse({
@@ -33,13 +32,18 @@ def signup(request):
         'password2': data.get('password2'),
     })
 
+    print('form.is_valid() = ', form.is_valid())
+
     if form.is_valid():
         user = form.save()
         user.is_active = False
         user.save()
+        print('user.email = ',  user.email)
+        print('user.id = ',  user.id)
 
         url = f'http://127.0.0.1:8000/activateemail/?email={user.email}&id={user.id}'
-
+        print('url__ = ', url)
+        print()
         send_mail(
             "Please verify your email",
             f"The url for activating your account is: {url}",

@@ -5,13 +5,26 @@ from .models import User
 
 
 def activateemail(request):
-    email = request.GET.get('email', '')
-    id = request.GET.get('id', '')
+    email_ = request.GET.get('', '')
+    email = email_[8:]
+
+    id_ = request.GET.get('id', '')
+    id = id_[2:]
+
+    # email = request.GET.get('email', '')
+    # id = request.GET.get('id', '')
+
+    print('request.GET = ', request.GET)
+    print()
+    print('email = ', email)
+    print()
+    print('id = ', id)
 
     if email and id:
         user = User.objects.get(id=id, email=email)
         user.is_active = True
         user.save()
+        print('user', user)
     
         return HttpResponse('The user is now activated. You can go ahead and log in!')
     else:
