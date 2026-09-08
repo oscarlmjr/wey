@@ -5,14 +5,13 @@ from .models import User
 
 
 def activateemail(request):
+    # email = request.GET.get('email', '')
     email_ = request.GET.get('', '')
     email = email_[8:]
 
+    # id = request.GET.get('id', '')
     id_ = request.GET.get('id', '')
     id = id_[2:]
-
-    # email = request.GET.get('email', '')
-    # id = request.GET.get('id', '')
 
     print('request.GET = ', request.GET)
     print()

@@ -46,16 +46,13 @@
 <script>
 import axios from 'axios'
 
-// import { useToastStore } from '@/stores/toast'
 import { useUserStore } from '@/stores/user'
 
 export default {
     setup() {
-        // const toastStore = useToastStore()
         const userStore = useUserStore()
 
         return {
-            // toastStore,
             userStore
         }
     },
@@ -91,6 +88,7 @@ export default {
                     })
                     .catch(error => {
                         console.log('error', error)
+                        
                         this.errors.push('The email or password is incorrect! Or the user is not activated!')
                     })
             }
