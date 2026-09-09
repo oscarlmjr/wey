@@ -58,7 +58,7 @@ import axios from 'axios'
 
 import { useToastStore } from '@/stores/toast'
 
-export default (await import('vue')).defineComponent({
+export default {
     setup() {
         const toastStore = useToastStore()
 
@@ -125,5 +125,5 @@ export default (await import('vue')).defineComponent({
             }
         }
     }
-})
+}
 </script>

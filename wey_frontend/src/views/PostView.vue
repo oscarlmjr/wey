@@ -44,7 +44,7 @@ import Trends from '../components/Trends.vue'
 import FeedItem from '../components/FeedItem.vue'
 import CommentItem from '../components/CommentItem.vue'
 
-export default (await import('vue')).defineComponent ({
+export default {
     name: 'PostView',
 
     components: {
@@ -101,5 +101,5 @@ export default (await import('vue')).defineComponent ({
                 })
         }
     }
-})
+}
 </script>

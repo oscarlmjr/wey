@@ -19,10 +19,10 @@
 <script>
 import { RouterLink } from 'vue-router'
 
-export default (await import('vue')).defineComponent ({
+export default {
     props: {
         comment: Object
     },
     components: { RouterLink }
-})
+}
 </script>

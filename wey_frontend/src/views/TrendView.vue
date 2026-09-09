@@ -30,7 +30,7 @@ import PeopleYouMayKnow from '../components/PeopleYouMayKnow.vue'
 import Trends from '../components/Trends.vue'
 import FeedItem from '../components/FeedItem.vue'
 
-export default (await import('vue')).defineComponent ({
+export default {
     name: 'FeedView',
 
     components: {
@@ -73,5 +73,5 @@ export default (await import('vue')).defineComponent ({
                 })
         },
     }
-})
+}
 </script>
