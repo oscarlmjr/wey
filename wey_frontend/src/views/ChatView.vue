@@ -4,11 +4,11 @@
             <div class="p-4 bg-white border border-gray-200 rounded-lg">
                 <div class="space-y-4">
                     <div 
-                      class="flex items-center justify-between"
-                      v-for="conversation in conversations"
-                      v-bind:key="conversation.id"
-                      v-on:click="setActiveConversation(conversation.id)"
-                      >
+                        class="flex items-center justify-between"
+                        v-for="conversation in conversations"
+                        v-bind:key="conversation.id"
+                        v-on:click="setActiveConversation(conversation.id)"
+                    >
                         <div class="flex items-center space-x-2">
                             <template
                                 v-for="user in conversation.users"
@@ -32,14 +32,14 @@
         <div class="main-center col-span-3 space-y-4">
             <div class="bg-white border border-gray-200 rounded-lg">
                 <div class="flex flex-col flex-grow p-4">
-                  <template
-                      v-for="message in activeConversation.messages"
-                      v-bind:key="message.id"
+                    <template
+                        v-for="message in activeConversation.messages"
+                        v-bind:key="message.id"
                     >
                         <div 
                             class="flex w-full mt-2 space-x-3 max-w-md ml-auto justify-end"
                             v-if="message.created_by.id == userStore.user.id"
-                          >
+                        >
                             <div>
                                 <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
                                     <p class="text-sm">{{ message.body }}</p>
@@ -50,7 +50,7 @@
                                 <img :src="message.created_by.get_avatar" class="w-[40px] rounded-full">
                             </div>
                         </div>
-                        
+
                         <div 
                             class="flex w-full mt-2 space-x-3 max-w-md"
                             v-else
@@ -89,29 +89,29 @@ import axios from 'axios'
 import { useUserStore } from '@/stores/user'
 
 export default {
-      name: 'chat',
+    name: 'chat',
 
-      setup() {
-          const userStore = useUserStore()
+    setup() {
+        const userStore = useUserStore()
 
-          return {
-              userStore
-          }
-      },
+        return {
+            userStore
+        }
+    },
 
-      data() {
-          return {
-              conversations: [],
-              activeConversation: {},
-              body: ''
-          }
-      },
+    data() {
+        return {
+            conversations: [],
+            activeConversation: {},
+            body: ''
+        }
+    },
 
-      mounted() {
+    mounted() {
         this.getConversations()
-      },
-
-      methods: {
+    },
+    
+    methods: {
         setActiveConversation(id) {
             console.log('setActiveConversation', id)
 
@@ -119,24 +119,24 @@ export default {
             this.getMessages()
         },
         getConversations() {
-          console.log('getConversations')
-          
-              axios
-                  .get('/api/chat/')
-                  .then(response => {
-                      console.log(response.data)
-                      
-                      this.conversations = response.data
-                      
-                      if (this.conversations.length) {
+            console.log('getConversations')
+
+            axios
+                .get('/api/chat/')
+                .then(response => {
+                    console.log(response.data)
+
+                    this.conversations = response.data
+
+                    if (this.conversations.length) {
                         this.activeConversation = this.conversations[0].id
-                      }
-                      
-                      this.getMessages()
-                  })
-                  .catch(error => {
-                      console.log(error)
-                  })
+                    }
+
+                    this.getMessages()
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
 
         getMessages() {
@@ -170,6 +170,6 @@ export default {
                     console.log(error)
                 })
         }
-    },
+    }
 }
 </script>

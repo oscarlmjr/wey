@@ -5,7 +5,7 @@
                 <h1 class="mb-6 text-2xl">Edit password</h1>
 
                 <p class="mb-6 text-gray-500">
-                  Here you can change your password!
+                    Here you can change your password!
                 </p>
             </div>
         </div>
@@ -110,5 +110,5 @@ export default {
             }
         }
     }
-  }
+}
 </script>

@@ -59,7 +59,7 @@ export default {
             post: {
                 id: null,
                 comments: []
-              },
+            },
             body: ''
         }
     },
@@ -71,11 +71,11 @@ export default {
     methods: {
         getPost() {
             axios
-            .get(`/api/posts/${this.$route.params.id}/`)
-            .then(response => {
+                .get(`/api/posts/${this.$route.params.id}/`)
+                .then(response => {
                     console.log('data', response.data)
 
-                    this.posts = response.data.post
+                    this.post = response.data.post
                 })
                 .catch(error => {
                     console.log('error', error)

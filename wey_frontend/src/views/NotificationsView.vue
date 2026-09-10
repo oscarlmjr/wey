@@ -10,7 +10,7 @@
                 {{ notification.body }} 
 
                 <button class="underline" @click="readNotification(notification)">Read more</button>
-             </div>
+            </div>
 
             <div 
                 class="p-4 bg-white border border-gray-200 rounded-lg"
@@ -53,13 +53,13 @@ export default {
         },
 
         async readNotification(notification) {
-          console.log('readNotification', notification.id)
+            console.log('readNotification', notification.id)
 
             await axios
                 .post(`/api/notifications/read/${notification.id}/`)
                 .then(response => {
                     console.log(response.data)
-                    
+
                     if (notification.type_of_notification == 'post_like' || notification.type_of_notification == 'post_comment') {
                         this.$router.push({name: 'postview', params: {id: notification.post_id}})
                     } else {

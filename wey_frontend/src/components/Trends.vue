@@ -22,7 +22,7 @@
 <script>
 import axios from 'axios'
 
-export default  (await import('vue')).defineComponent ({
+export default {
     name: 'trends',
 
     data() {
@@ -49,5 +49,5 @@ export default  (await import('vue')).defineComponent ({
                 })
         }
     }
-})
+}
 </script>

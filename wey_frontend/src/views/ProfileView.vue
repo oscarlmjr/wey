@@ -8,7 +8,7 @@
 
                 <div class="mt-6 flex space-x-8 justify-around" v-if="user.id">
                     <RouterLink :to="{name: 'friends', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} friends</RouterLink>
-                    <p class="text-xs text-gray-500">{{ user.posts_count }}  posts</p>
+                    <p class="text-xs text-gray-500">{{ user.posts_count }} posts</p>
                 </div>
 
                 <div class="mt-6">
@@ -55,10 +55,10 @@
                 <form v-on:submit.prevent="submitForm" method="post">
                     <div class="p-4">  
                         <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
-                    </div>
 
-                    <div id="preview" v-if="url">
-                        <img :src="url" class="w-[100px] mt-3 rounded-xl" />
+                        <div id="preview" v-if="url">
+                            <img :src="url" class="w-[100px] mt-3 rounded-xl" />
+                        </div>
                     </div>
 
                     <div class="p-4 border-t border-gray-100 flex justify-between">
@@ -218,7 +218,7 @@ export default {
             formData.append('body', this.body)
 
             axios
-                .post('/api/posts/create/', {
+                .post('/api/posts/create/', formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     }

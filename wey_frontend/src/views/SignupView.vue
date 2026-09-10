@@ -25,7 +25,7 @@
 
                     <div>
                         <label>E-mail</label><br>
-                        <input type="email" name="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        <input type="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>

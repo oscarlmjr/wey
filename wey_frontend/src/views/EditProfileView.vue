@@ -8,7 +8,7 @@
                     Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
                     Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
                 </p>
-                
+
                 <RouterLink to="/profile/edit/password" class="underline">Edit password</RouterLink>
             </div>
         </div>
@@ -67,7 +67,7 @@ export default {
         return {
             form: {
                 email: this.userStore.user.email,
-                name: this.userStore.user.name,
+                name: this.userStore.user.name
             },
             errors: [],
         }
@@ -119,5 +119,5 @@ export default {
             }
         }
     }
-  }
+}
 </script>
