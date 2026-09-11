@@ -46,14 +46,13 @@ def post_detail(request, pk):
 
 
 @api_view(['GET'])
-def post_list_profile(request, id):
+def post_list_profile(request, id):   
     user = User.objects.get(pk=id)
-    # posts = Post.objects.filter(created_by_id=id)
-    posts = Post.objects.filter(create_by_id=id)
+    posts = Post.objects.filter(created_by_id=id)
 
     if not request.user in user.friends.all():
         posts = posts.filter(is_private=False)
-        
+
     posts_serializer = PostSerializer(posts, many=True)
     user_serializer = UserSerializer(user)
 
@@ -138,6 +137,23 @@ def post_create_comment(request, pk):
     serializer = CommentSerializer(comment)
 
     return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(['DELETE'])
+def post_delete(request, pk):
+    post = Post.objects.filter(created_by=request.user).get(pk=pk)
+    post.delete()
+
+    return JsonResponse({'message': 'post deleted'})
+
+
+@api_view(['POST'])
+def post_report(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.reported_by_users.add(request.user)
+    post.save()
+
+    return JsonResponse({'message': 'post reported'})
 
 
 @api_view(['GET'])

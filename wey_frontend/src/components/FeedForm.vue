@@ -39,11 +39,11 @@ export default {
             url: null,
         }
     },
-    methods: {
 
-      submitForm() {
-        console.log('submitForm', this.body)
-        
+    methods: {
+        submitForm() {
+            console.log('submitForm', this.body)
+
             let formData = new FormData()
             formData.append('image', this.$refs.file.files[0])
             formData.append('body', this.body)
@@ -63,7 +63,6 @@ export default {
                     this.is_private = false
                     this.$refs.file.value = null
                     this.url = null
-                    this.user.posts_count += 1
 
                     if (this.user) {
                         this.user.posts_count += 1
@@ -73,7 +72,6 @@ export default {
                     console.log('error', error)
                 })
         },
-
     }
 }
 </script>

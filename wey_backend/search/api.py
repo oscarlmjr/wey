@@ -21,8 +21,6 @@ def search(request):
     users = User.objects.filter(name__icontains=query)
     users_serializer = UserSerializer(users, many=True)
 
-    posts = Post.objects.filter(body_icontains=query, is_private=False) # Public posts
-
     posts = Post.objects.filter(
         Q(body__icontains=query, is_private=False) | 
         Q(created_by_id__in=list(user_ids), body__icontains=query)

@@ -57,7 +57,7 @@ def signup(request):
         )
     else:
         message = form.errors.as_json()
-
+    
     print(message)
 
     return JsonResponse({'message': message}, safe=False)
@@ -119,7 +119,6 @@ def editpassword(request):
         return JsonResponse({'message': 'success'})
     else:
         return JsonResponse({'message': form.errors.as_json()}, safe=False)
-    
 
 @api_view(['POST'])
 def send_friendship_request(request, pk):
